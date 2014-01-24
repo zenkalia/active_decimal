@@ -1,4 +1,4 @@
-# ActiveDecimal - A way to make numbers human readable
+# ActiveDecimal - Word-number mapping for human readable numbers
 
 When working with numbers there are a number of slippery slopes.  When dealing with large numbers, for example, you can accidentally put too many or too few zeros.  It's dangerous to be typing out novemdecillions by hand.  ActiveDecimal to the rescue.  Bill Gates isn't worth $`78200000000`, he's worth $`78.2.billion`.
 
