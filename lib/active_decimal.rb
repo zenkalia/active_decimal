@@ -35,6 +35,11 @@ class Numeric
       :vigintillion      => 10**63,
       :centillion        => 10**303,
       :googol            => 10**100,
+      :dozen             => 12,
+      :bakers_dozen      => 13,
+      :gross             => 144,
+      :small_gross       => 120,
+      :great_gross       => 1728
     }
 
     if big_numbers[meth]

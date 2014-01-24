@@ -20,6 +20,10 @@ describe Numeric do
     it 'gives you integers when it can' do
       expect( 3.4.billion.class ).to eq( Fixnum )
     end
+    it 'lets you go to the bakery' do
+      expect( 5.dozen ).to eq( 60 )
+      expect( 2.bakers_dozen ).to eq( 26 )
+    end
   end
 
   describe 'numbers getting smaller' do
