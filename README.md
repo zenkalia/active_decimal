@@ -1,4 +1,4 @@
-# ActiveDecimal - Word-number mapping for human readable numbers
+# ActiveDecimal - Word-number mapping for human readable code
 
 When working with numbers there are a number of slippery slopes.  When dealing with large numbers, for example, you can accidentally put too many or too few zeros.  It's dangerous to be typing out novemdecillions by hand.  ActiveDecimal to the rescue.  Bill Gates isn't worth $`78200000000`, he's worth $`78.2.billion`.
 
@@ -20,7 +20,37 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    2.0.0-p247 :001 > require 'active_decimal'
+     => true
+    2.0.0-p247 :002 > 4.thousand
+     => 4000
+    2.0.0-p247 :003 > 5.fifths
+     => 1
+    2.0.0-p247 :004 > 1.twentieth
+     => (1/20)
+    2.0.0-p247 :005 > 6.googol
+     => 60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    2.0.0-p247 :006 > 3.8.billion
+     => 3800000000
+
+You might even want to use it with money~
+
+    2.0.0-p247 :010 >   require 'money'
+     => true
+    2.0.0-p247 :011 > bill = 78.1.billion.to_money
+     => #<Money fractional:7810000000000 currency:USD>
+    2.0.0-p247 :012 > salary = 1.million.to_money
+     => #<Money fractional:100000000 currency:USD>
+
+Though I like it better like this...
+
+    2.0.0-p247 :016 >   class Numeric
+    2.0.0-p247 :017?>     alias_method :dollars, :to_money
+    2.0.0-p247 :018?>   end
+     => Numeric
+    2.0.0-p247 :019 >
+    2.0.0-p247 :020 >   bill += 5.trillion.dollars
+     => #<Money fractional:507810000000000 currency:USD>
 
 ## Contributing
 
