@@ -1,5 +1,7 @@
 # ActiveDecimal - Word-number mapping for human readable code
 
+[![Gem Version](https://badge.fury.io/rb/active_decimal.png)](http://badge.fury.io/rb/active_decimal) [![Build Status](https://travis-ci.org/zenkalia/active_decimal.png?branch=master)](https://travis-ci.org/zenkalia/active_decimal)
+
 When working with numbers there are a number of slippery slopes.  When dealing with large numbers, for example, you can accidentally put too many or too few zeros.  It's dangerous to be typing out novemdecillions by hand.  ActiveDecimal to the rescue.  Bill Gates isn't worth $`78200000000`, he's worth $`78.2.billion`.
 
 In addition to large numbers, ActiveDecimal will also make small numbers easy to manage and human readable.  Rather than writing `0.125` or `1.0/8` (don't you hate adding `.0` to make something a float?) you can write `1.eighth`.  Or if you're talking about statistics in your DnD game, you could use `4.twentieths`.
