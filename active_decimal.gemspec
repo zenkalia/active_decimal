@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = ActiveDecimal::VERSION
   spec.authors       = ["Mike Kendall"]
   spec.email         = ["zenkalia@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Word-number mapping for human readable code}
+  spec.summary       = %q{Word-number mapping for human readable code}
   spec.homepage      = ""
   spec.license       = "MIT"
 
