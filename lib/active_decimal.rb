@@ -1,4 +1,3 @@
-require 'pry'
 require "active_decimal/version"
 
 module ActiveDecimal
