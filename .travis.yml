@@ -6,6 +6,5 @@ rvm:
   - jruby-19mode
   - rbx
   - ruby-head
-  - jruby-head
 script:
   - bundle exec rspec
