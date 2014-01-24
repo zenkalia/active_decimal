@@ -17,6 +17,9 @@ describe Numeric do
     it 'lets you count even bigger ones' do
       expect( 3.4.googol ).to eq(3.4 * 10**100)
     end
+    it 'gives you integers when it can' do
+      expect( 3.4.billion.class ).to eq( Fixnum )
+    end
   end
 
   describe 'numbers getting smaller' do

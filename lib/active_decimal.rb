@@ -37,6 +37,11 @@ class Numeric
       :googol            => 10**100,
     }
 
+    if big_numbers[meth]
+      val = self * big_numbers[meth]
+      return val.to_i == val ? val.to_i : val
+    end
+
     return self * big_numbers[meth] if big_numbers[meth]
 
     singular_small_numbers = {
