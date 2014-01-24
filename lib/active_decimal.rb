@@ -2,52 +2,50 @@ require 'pry'
 require "active_decimal/version"
 
 module ActiveDecimal
+  BIG_NUMBERS = {
+    :thousand          => 10**3,
+    :million           => 10**6,
+    :billion           => 10**9,
+    :trillion          => 10**12,
+    :quadrillion       => 10**15,
+    :quintillion       => 10**18,
+    :sextillion        => 10**21,
+    :septillion        => 10**24,
+    :octillion         => 10**27,
+    :nonillion         => 10**30,
+    :decillion         => 10**33,
+    :undecillion       => 10**36,
+    :duodecillion      => 10**39,
+    :tredecillion      => 10**42,
+    :quattuordecillion => 10**45,
+    :quindecillion     => 10**48,
+    :quinquadecillion  => 10**48,
+    :sexdecillion      => 10**51,
+    :sedecillion       => 10**51,
+    :septendecillion   => 10**54,
+    :octodecillion     => 10**57,
+    :novemdecillion    => 10**60,
+    :novendecillion    => 10**60,
+    :vigintillion      => 10**63,
+    :centillion        => 10**303,
+    :googol            => 10**100,
+    :dozen             => 12,
+    :bakers_dozen      => 13,
+    :gross             => 144,
+    :small_gross       => 120,
+    :great_gross       => 1728
+  }
   class BadGrammar < StandardError
   end
 end
 
 class Numeric
   def method_missing(meth, *args, &block)
-    big_numbers = {
-      :thousand          => 10**3,
-      :million           => 10**6,
-      :billion           => 10**9,
-      :trillion          => 10**12,
-      :quadrillion       => 10**15,
-      :quintillion       => 10**18,
-      :sextillion        => 10**21,
-      :septillion        => 10**24,
-      :octillion         => 10**27,
-      :nonillion         => 10**30,
-      :decillion         => 10**33,
-      :undecillion       => 10**36,
-      :duodecillion      => 10**39,
-      :tredecillion      => 10**42,
-      :quattuordecillion => 10**45,
-      :quindecillion     => 10**48,
-      :quinquadecillion  => 10**48,
-      :sexdecillion      => 10**51,
-      :sedecillion       => 10**51,
-      :septendecillion   => 10**54,
-      :octodecillion     => 10**57,
-      :novemdecillion    => 10**60,
-      :novendecillion    => 10**60,
-      :vigintillion      => 10**63,
-      :centillion        => 10**303,
-      :googol            => 10**100,
-      :dozen             => 12,
-      :bakers_dozen      => 13,
-      :gross             => 144,
-      :small_gross       => 120,
-      :great_gross       => 1728
-    }
 
-    if big_numbers[meth]
-      val = self * big_numbers[meth]
+    if ActiveDecimal::BIG_NUMBERS[meth]
+      val = self * ActiveDecimal::BIG_NUMBERS[meth]
       return val.to_i == val ? val.to_i : val
     end
-
-    return self * big_numbers[meth] if big_numbers[meth]
 
     singular_small_numbers = {
       :half        => 2,
