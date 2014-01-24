@@ -18,4 +18,23 @@ describe Numeric do
       expect( 3.4.googol ).to eq(3.4 * 10**100)
     end
   end
+
+  describe 'numbers getting smaller' do
+    it 'lets you make quarters' do
+      expect( 1.fourth ).to eq( 0.25 )
+      expect( 1.quarter ).to eq( 0.25 )
+    end
+    it 'lets you make teen fractions' do
+      expect( 1.fifteenth ).to eq( 1.0 / 15 )
+      expect( 1.sixteenth ).to eq( 1.0 / 16 )
+    end
+    it 'does not let you make grammar errors' do
+      expect{ 4.sixteenth }.to raise_error ActiveDecimal::BadGrammar
+      expect{ 9.half }.to raise_error ActiveDecimal::BadGrammar
+    end
+    it 'lets you make plural fractions' do
+      expect( 5.fourths ).to eq( 1.25 )
+      expect( 8.halves ).to eq( 4 )
+    end
+  end
 end

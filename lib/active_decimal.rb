@@ -1,6 +1,11 @@
 require 'pry'
 require "active_decimal/version"
 
+module ActiveDecimal
+  class BadGrammar < StandardError
+  end
+end
+
 class Numeric
   def method_missing(meth, *args, &block)
     big_numbers = {
@@ -33,6 +38,84 @@ class Numeric
     }
 
     return self * big_numbers[meth] if big_numbers[meth]
+
+    singular_small_numbers = {
+      :half        => 2,
+      :third       => 3,
+      :quarter     => 4,
+      :fourth      => 4,
+      :fifth       => 5,
+      :sixth       => 6,
+      :seventh     => 7,
+      :eighth      => 8,
+      :ninth       => 9,
+      :tenth       => 10,
+      :eleventh    => 11,
+      :twelth      => 12,
+      :thirteen    => 13,
+      :fourteenth  => 14,
+      :fifteenth   => 15,
+      :sixteenth   => 16,
+      :seventeenth => 17,
+      :eighteenth  => 18,
+      :nineteenth  => 19,
+      :twentieth   => 20,
+      :thirtieth   => 30,
+      :fourtieth   => 40,
+      :fiftieth    => 50,
+      :sixtieth    => 60,
+      :seventieth  => 70,
+      :eightieth   => 80,
+      :ninetieth   => 90,
+      :hundredth   => 100,
+    }
+
+    if singular_small_numbers[meth]
+      if self <= 1 and self > 0
+        return Rational(self, singular_small_numbers[meth])
+      else
+        raise ActiveDecimal::BadGrammar
+      end
+    end
+
+    plural_small_numbers = {
+      :halves       => 2,
+      :thirds       => 3,
+      :quarters     => 4,
+      :fourths      => 4,
+      :fifths       => 5,
+      :sixths       => 6,
+      :sevenths     => 7,
+      :eighths      => 8,
+      :ninths       => 9,
+      :tenths       => 10,
+      :elevenths    => 11,
+      :twelths      => 12,
+      :thirteens    => 13,
+      :fourteenths  => 14,
+      :fifteenths   => 15,
+      :sixteenths   => 16,
+      :seventeenths => 17,
+      :eighteenths  => 18,
+      :nineteenths  => 19,
+      :twentieths   => 20,
+      :thirtieths   => 30,
+      :fourtieths   => 40,
+      :fiftieths    => 50,
+      :sixtieths    => 60,
+      :seventieths  => 70,
+      :eightieths   => 80,
+      :ninetieths   => 90,
+      :hundredths   => 100,
+    }
+
+    if plural_small_numbers[meth]
+      if self > 1 or self <= 0
+        return Rational(self, plural_small_numbers[meth])
+      else
+        raise ActiveDecimal::BadGrammar
+      end
+    end
 
     super
   end
