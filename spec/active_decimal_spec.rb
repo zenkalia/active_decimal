@@ -39,4 +39,15 @@ describe Numeric do
       expect( 8.halves ).to eq( 4 )
     end
   end
+
+  describe 'math masturbation' do
+    it 'is commutative' do
+      expect( 4.million.fifths ).to eq( 4.fifths.million )
+      expect( 6.9.billion.trillion ).to eq( 6.9.trillion.billion )
+    end
+    it 'is distributive' do
+      expect( 4.billion + 5.billion ).to eq( (4+5).billion )
+      expect( 5.fourths - 8.fourths ).to eq( (5-8).fourths )
+    end
+  end
 end
