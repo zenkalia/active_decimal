@@ -31,6 +31,8 @@ describe Numeric do
     it 'does not let you make grammar errors' do
       expect{ 4.sixteenth }.to raise_error ActiveDecimal::BadGrammar
       expect{ 9.half }.to raise_error ActiveDecimal::BadGrammar
+      expect{ 1.fourths }.to raise_error ActiveDecimal::BadGrammar
+      expect{ 1.hundredths }.to raise_error ActiveDecimal::BadGrammar
     end
     it 'lets you make plural fractions' do
       expect( 5.fourths ).to eq( 1.25 )
