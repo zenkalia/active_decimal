@@ -103,26 +103,24 @@ end
 
 class Numeric
   def method_missing(meth, *args, &block)
-
     if ActiveDecimal::BIG_NUMBERS[meth]
-      val = self * ActiveDecimal::BIG_NUMBERS[meth]
-      return val.to_i == val ? val.to_i : val
+      return (self * ActiveDecimal::BIG_NUMBERS[meth]).to_i
     end
 
     if ActiveDecimal::SINGULAR_SMALL_NUMBERS[meth]
-      if self <= 1 and self > 0
-        return Rational(self, ActiveDecimal::SINGULAR_SMALL_NUMBERS[meth])
-      else
-        raise ActiveDecimal::BadGrammar
+      unless self <= 1 && self > 0
+        raise ActiveDecimal::BadGrammar 
       end
+      
+      return Rational(self, ActiveDecimal::SINGULAR_SMALL_NUMBERS[meth])
     end
 
     if ActiveDecimal::PLURAL_SMALL_NUMBERS[meth]
-      if self > 1 or self <= 0
-        return Rational(self, ActiveDecimal::PLURAL_SMALL_NUMBERS[meth])
-      else
+      unless  self > 1 || self <= 0
         raise ActiveDecimal::BadGrammar
       end
+      
+      return Rational(self, ActiveDecimal::PLURAL_SMALL_NUMBERS[meth])
     end
 
     super
